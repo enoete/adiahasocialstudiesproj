@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Dutch Water Engineering Presentation</title>
+    <style>
+        * {
+            font-family: Arial, sans-serif;
+            box-sizing: border-box;
+        }
+        
+        body {
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        
+        h1 {
+            color: #2563eb;
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .subtitle {
+            text-align: center;
+            color: #6b7280;
+            font-size: 1.2em;
+            margin-bottom: 30px;
+        }
+        
+        .tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .tab-button {
+            padding: 12px 24px;
+            border: none;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1.1em;
+            font-weight: bold;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        
+        .tab-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+        
+        .tab-button.active {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            transform: scale(1.05);
+        }
+        
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.5s;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .section-card {
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .section-title {
+            color: #dc2626;
+            font-size: 1.8em;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .timer {
+            background: #fbbf24;
+            color: #7c2d12;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.7em;
+            font-weight: bold;
+        }
+        
+        .talking-points {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            line-height: 1.8;
+            font-size: 1.1em;
+            color: #374151;
+        }
+        
+        .pronunciation {
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+            border-radius: 10px;
+            padding: 15px;
+            margin: 15px 0;
+            border-left: 5px solid #ec4899;
+        }
+        
+        .dutch-word {
+            color: #1e40af;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+        
+        .phonetic {
+            color: #dc2626;
+            font-weight: bold;
+            font-style: italic;
+        }
+        
+        .demo-note {
+            background: #fef3c7;
+            border: 2px dashed #f59e0b;
+            border-radius: 10px;
+            padding: 15px;
+            margin: 15px 0;
+            color: #92400e;
+            font-weight: bold;
+        }
+        
+        .practice-tip {
+            background: #dbeafe;
+            border-radius: 10px;
+            padding: 15px;
+            margin: 15px 0;
+            border-left: 5px solid #3b82f6;
+            color: #1e3a8a;
+        }
+        
+        .quick-facts {
+            background: linear-gradient(135deg, #fccb90 0%, #d57eeb 100%);
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        
+        .fact-item {
+            background: white;
+            border-radius: 10px;
+            padding: 10px 15px;
+            margin: 10px 0;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            font-weight: bold;
+            color: #4c1d95;
+        }
+        
+        .pronunciation-card {
+            background: white;
+            border-radius: 10px;
+            padding: 15px;
+            margin: 10px 0;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            border-left: 5px solid #10b981;
+        }
+        
+        .emoji {
+            font-size: 1.5em;
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🌊 Dutch Water Engineering Presentation 🚲</h1>
+        <div class="subtitle">Your 5-6 Minute Journey Through An Impossible Problem Solved!</div>
+        
+        <div class="tabs">
+            <button class="tab-button active" onclick="showTab('opening')">Opening</button>
+            <button class="tab-button" onclick="showTab('problem')">The Problem</button>
+            <button class="tab-button" onclick="showTab('disaster')">The Disaster</button>
+            <button class="tab-button" onclick="showTab('engineering')">Engineering Marvels</button>
+            <button class="tab-button" onclick="showTab('battle')">Daily Battle</button>
+            <button class="tab-button" onclick="showTab('culture')">Dutch Culture</button>
+            <button class="tab-button" onclick="showTab('conclusion')">Conclusion</button>
+            <button class="tab-button" onclick="showTab('words')">Dutch Words</button>
+        </div>
+        
+        <div id="opening" class="tab-content active">
+            <div class="section-card">
+                <div class="section-title">
+                    <span class="emoji">🎤</span> Opening
+                    <span class="timer">30 seconds</span>
+                </div>
+                <div class="talking-points">
+                    <p><strong>Good afternoon!</strong> My presentation today is on how the Dutch turned their greatest challenge into their greatest strength.</p>
+                    
+                    <p>Sometimes in life, you can be faced with bad things. Lots of challenges. And when that happens, you can either give in and complain a lot, or you can actually choose to face them head on and do something about it. Well, this is exactly what the Dutch were able to do.</p>
+                    
+                    <p>When something is below sea level, do you know what that means? Yup! It means that it is super easy for the sea to flood that particular area. A whopping 25% of Holland happens to be below sea level. That's a lot actually.</p>
+                </div>
+                <div class="practice-tip">
+                    💡 <strong>Tip:</strong> Start with a smile and make eye contact! This opening hooks your audience.
+                </div>
+            </div>
+        </div>
+        
+        <div id="problem" class="tab-content">
+            <div class="section-card">
+                <div class="section-title">
+                    <span class="emoji">😱</span> The Impossible Problem
+                    <span class="timer">45 seconds</span>
+                </div>
+                <div class="talking-points">
+                    <p>Imagine if your house was built in a swimming pool - not near it, but IN it, below the water! That's what <strong>17 million</strong> Dutch people deal with every day.</p>
+                    
+                    <p>Amsterdam's airport sits <strong>13 feet below sea level</strong>. If they stopped pumping water for just 3 weeks, planes would be landing in a lake!</p>
+                    
+                    <p>And here's the scary part - the land keeps sinking about <strong>half an inch every year</strong>. So their problem gets WORSE over time. It's like a video game where the difficulty level never stops increasing.</p>
+                </div>
+                <div class="quick-facts">
+                    <div class="fact-item">🏊 Swimming Pool Analogy - Use your hands to show "below"</div>
+                    <div class="fact-item">✈️ Airport underwater in 3 weeks!</div>
+                    <div class="fact-item">📉 Land sinking = Problem getting worse</div>
+                </div>
+            </div>
+        </div>
+        
+        <div id="disaster" class="tab-content">
+            <div class="section-card">
+                <div class="section-title">
+                    <span class="emoji">⛈️</span> The Disaster That Changed Everything
+                    <span class="timer">45 seconds</span>
+                </div>
+                <div class="talking-points">
+                    <p>In <strong>1953</strong>, a massive storm hit. The old dirt walls couldn't handle it.</p>
+                    
+                    <p>In just one night, <strong>1,800 people died</strong> - that's like our entire school disappearing three times. Almost <strong>50,000 homes</strong> were destroyed.</p>
+                    
+                    <p>But here's my favorite part - instead of giving up or moving away, the Dutch said '<strong>Never again.</strong>' And they really meant it.</p>
+                </div>
+                <div class="practice-tip">
+                    💡 <strong>Tip:</strong> Pause after "1,800 people died" for impact. Show emotion - this was a real tragedy that led to amazing innovation.
+                </div>
+            </div>
+        </div>
+        
+        <div id="engineering" class="tab-content">
+            <div class="section-card">
+                <div class="section-title">
+                    <span class="emoji">🏗️</span> The Engineering Marvels
+                    <span class="timer">90 seconds</span>
+                </div>
+                <div class="talking-points">
+                    <p>So they built something incredible called the <strong>Delta Works</strong> - one of the Seven Wonders of the Modern World!</p>
+                    
+                    <p>They had a genius idea: Why protect 700 kilometers of coastline when you could shorten it to just 80? So they built massive gates and dams.</p>
+                    
+                    <div class="pronunciation">
+                        <span class="dutch-word">Maeslantkering</span><br>
+                        Say it: <span class="phonetic">MAHS-lahnt-kair-ing</span><br>
+                        Practice: "The MAHS-lahnt-kair-ing has gates as tall as the Eiffel Tower!"
+                    </div>
+                    
+                    <p>The coolest one is the Maeslantkering. It has two gates, each as wide as the Eiffel Tower is tall! When a storm comes, these hollow gates FLOAT into place like boats, then they fill them with water so they SINK and block the storm. Since 1997, they've only needed them twice!</p>
+                    
+                    <div class="pronunciation">
+                        <span class="dutch-word">Afsluitdijk</span><br>
+                        Say it: <span class="phonetic">AHF-sloot-dike</span><br>
+                        Practice: "The AHF-sloot-dike is a 20-mile dam"
+                    </div>
+                    
+                    <p>They also built the Afsluitdijk - a 20-mile dam that turned a dangerous sea into a freshwater lake. They used <strong>70,000 concrete blocks</strong>, each weighing as much as four cars!</p>
+                </div>
+                <div class="practice-tip">
+                    💡 <strong>Tip:</strong> Use hand gestures to show the size of the gates. Spread your arms wide for "Eiffel Tower tall"!
+                </div>
+            </div>
+        </div>
+        
+        <div id="battle" class="tab-content">
+            <div class="section-card">
+                <div class="section-title">
+                    <span class="emoji">💧</span> The Daily Battle - Demonstration
+                    <span class="timer">90 seconds</span>
+                </div>
+                <div class="demo-note">
+                    🔬 <strong>DEMO TIME!</strong> Get your polder model ready here!
+                </div>
+                <div class="talking-points">
+                    <p>But here's what nobody realizes - they didn't solve this problem once. They fight it every single day!</p>
+                    
+                    <p><strong>[Start demonstration with polder model]</strong></p>
+                    
+                    <p>Look - I pump the water out of my <span class="dutch-word">polder</span> <span class="phonetic">(POLE-der)</span>, but watch what happens... The water keeps coming back through seepage! Add some rain [spray bottle], and it gets worse.</p>
+                    
+                    <p>This is exactly what happens in Holland - rain from above, groundwater from below, and river water pushing through tiny cracks.</p>
+                    
+                    <p>Dutch pumps remove enough water every year to fill <strong>400,000 Olympic swimming pools</strong>! And they can NEVER stop. If they did, the country would flood in weeks!</p>
+                </div>
+                <div class="practice-tip">
+                    💡 <strong>Demo Tips:</strong><br>
+                    • Have water pre-colored blue<br>
+                    • Keep paper towels handy<br>
+                    • Practice the breach beforehand<br>
+                    • Time your pumping to match your talking
+                </div>
+            </div>
+        </div>
+        
+        <div id="culture" class="tab-content">
+            <div class="section-card">
+                <div class="section-title">
+                    <span class="emoji">🚲</span> How Water Created Dutch Culture
+                    <span class="timer">60 seconds</span>
+                </div>
+                <div class="talking-points">
+                    <p>Fighting water shaped everything about Dutch culture!</p>
+                    
+                    <p><strong>🚲 Bikes!</strong> The Netherlands has more bikes than people - why? All those dikes have flat maintenance roads on top - perfect bike paths! Kids ride to school on walls holding back the sea!</p>
+                    
+                    <p><strong>🧀 Cheese!</strong> Their famous cheese tastes special because cows eat grass growing on ancient sea floor. The salt in the soil gives it unique flavor.</p>
+                    
+                    <p><strong>🏊 Swimming!</strong> Every Dutch kid MUST learn to swim by age 6. It's not optional - it's survival!</p>
+                    
+                    <p>They've been working together on this for <strong>800 years</strong>. They have 'Water Boards' - democratic groups where neighbors vote on water management. Because if your neighbor's pump fails, YOUR house floods too!</p>
+                </div>
+                <div class="quick-facts">
+                    <div class="fact-item">🚲 More bikes than people!</div>
+                    <div class="fact-item">🧀 Sea salt makes cheese special</div>
+                    <div class="fact-item">🏊 Swimming = Survival skill</div>
+                    <div class="fact-item">🤝 800 years of teamwork</div>
+                </div>
+            </div>
+        </div>
+        
+        <div id="conclusion" class="tab-content">
+            <div class="section-card">
+                <div class="section-title">
+                    <span class="emoji">🌟</span> The Future and Conclusion
+                    <span class="timer">60 seconds</span>
+                </div>
+                <div class="talking-points">
+                    <p>Today, the Dutch teach the whole world. After Hurricane Katrina, American engineers asked them for help. Countries everywhere use Dutch water technology.</p>
+                    
+                    <p>But with climate change, they'll spend <strong>150 billion dollars</strong> this century just to stay dry. Their newest idea? Sometimes work WITH water instead of against it - like parks that can temporarily become lakes during floods.</p>
+                    
+                    <p>Remember what I said about facing challenges? The Dutch had three choices: give up, complain, or turn their problem into strength. <strong>They chose strength.</strong></p>
+                    
+                    <p>They turned living below sea level into becoming the world's best water engineers.</p>
+                    
+                    <p>My favorite Dutch saying is: <strong>'God created the world, but the Dutch created the Netherlands.'</strong></p>
+                    
+                    <p>So next time you face something impossible, remember - the Dutch keep an entire country from drowning, every single day, while riding bikes and making amazing cheese. If they can do that, imagine what YOU can do with your challenges!</p>
+                    
+                    <p><strong>Thank you!</strong></p>
+                </div>
+                <div class="practice-tip">
+                    💡 <strong>Ending Strong:</strong> Pause before "Thank you!" and smile. Be ready for questions about your demo!
+                </div>
+            </div>
+        </div>
+        
+        <div id="words" class="tab-content">
+            <div class="section-card">
+                <div class="section-title">
+                    <span class="emoji">🗣️</span> Master These Dutch Words!
+                </div>
+                
+                <div class="pronunciation-card">
+                    <h3 class="dutch-word">Afsluitdijk</h3>
+                    <p><strong>Say it:</strong> <span class="phonetic">AHF-sloot-dike</span></p>
+                    <p><strong>Remember:</strong> Af (like "off") - sluit (like "sloot") - dijk (like "dike")</p>
+                    <p><strong>Use it:</strong> "The Afsluitdijk is a 20-mile dam that turned the sea into a lake"</p>
+                </div>
+                
+                <div class="pronunciation-card">
+                    <h3 class="dutch-word">Maeslantkering</h3>
+                    <p><strong>Say it:</strong> <span class="phonetic">MAHS-lahnt-kair-ing</span></p>
+                    <p><strong>Remember:</strong> Maes (like "moss") - lant - kering (like "caring" with a k)</p>
+                    <p><strong>Use it:</strong> "The Maeslantkering has gates as tall as the Eiffel Tower"</p>
+                </div>
+                
+                <div class="pronunciation-card">
+                    <h3 class="dutch-word">Polder</h3>
+                    <p><strong>Say it:</strong> <span class="phonetic">POLE-der</span></p>
+                    <p><strong>Remember:</strong> This one's easy! Just like it looks</p>
+                    <p><strong>Use it:</strong> "A polder is land below sea level that needs constant pumping"</p>
+                </div>
+                
+                <div class="pronunciation-card">
+                    <h3 class="dutch-word">Zuiderzee</h3>
+                    <p><strong>Say it:</strong> <span class="phonetic">ZOW-der-zay</span> (zow rhymes with "how")</p>
+                    <p><strong>Remember:</strong> Zuider (HOW-der with a Z) - zee (ZAY)</p>
+                    <p><strong>Use it:</strong> "The Zuiderzee was a dangerous sea before they built the dam"</p>
+                </div>
+                
+                <div class="pronunciation-card">
+                    <h3 class="dutch-word">IJsselmeer</h3>
+                    <p><strong>Say it:</strong> <span class="phonetic">EYE-sel-mare</span></p>
+                    <p><strong>Remember:</strong> IJ = "eye", ssel = "sel", meer = "mare"</p>
+                    <p><strong>Use it:</strong> "The IJsselmeer is now a freshwater lake"</p>
+                </div>
+                
+                <div class="practice-tip">
+                    💡 <strong>Pro Tip:</strong> If you forget how to say a word, just say "this amazing Dutch engineering project" and keep going! The audience will still be impressed!
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        function showTab(tabName) {
+            // Hide all tab contents
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(content => {
+                content.classList.remove('active');
+            });
+            
+            // Remove active class from all buttons
+            const buttons = document.querySelectorAll('.tab-button');
+            buttons.forEach(button => {
+                button.classList.remove('active');
+            });
+            
+            // Show selected tab
+            document.getElementById(tabName).classList.add('active');
+            
+            // Mark button as active
+            event.target.classList.add('active');
+        }
+    </script>
+</body>
+</html>
